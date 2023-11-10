@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-
 from app.bookings.schemas import SBookings
 from app.bookings.service import BookingService
 
