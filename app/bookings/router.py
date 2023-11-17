@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends
 
 from app.bookings.schemas import SBookings
 from app.bookings.service import BookingService
+from app.exceptions import RoomCannotBeBooked
 from app.users.dependencies import get_current_user
 from app.users.models import Users
 
@@ -27,4 +28,6 @@ async def add_bookings(
         date_to: date,
         user: Users = Depends(get_current_user),
 ):
-    booking = BookingService.add(user.id, room_id, date_from, date_to)
+    booking = await BookingService.add(user.id, room_id, date_from, date_to)
+    if not booking:
+        raise RoomCannotBeBooked
