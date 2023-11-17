@@ -3,7 +3,7 @@ from sqlalchemy import delete, insert, select, func, and_, or_
 
 from app.bookings.models import Bookings
 from app.database import async_session_maker, engine
-from app.hotels.models import Rooms
+from app.hotels.rooms.models import Rooms
 from app.service.base import BaseService
 
 
