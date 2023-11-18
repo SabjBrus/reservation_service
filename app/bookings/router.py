@@ -1,7 +1,6 @@
 from datetime import date
 
-from fastapi import APIRouter, Depends
-
+from fastapi import APIRouter, Depends, status
 
 from app.bookings.schemas import SBookings
 from app.bookings.service import BookingService
@@ -33,7 +32,7 @@ async def add_bookings(
         raise RoomCannotBeBooked
 
 
-@router.delete('/{booking_id}', status_code=204)
+@router.delete('/{booking_id}', status_code=status.HTTP_204_NO_CONTENT)
 async def delete_booking(
         booking_id: int,
         user: Users = Depends(get_current_user),
