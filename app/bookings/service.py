@@ -89,3 +89,24 @@ class BookingService(BaseService):
                 raise BookingNotExist
             await session.delete(result)
             await session.commit()
+
+    @classmethod
+    async def get_user_bookings(cls, user_id: int):
+        async with async_session_maker() as session:
+            get_user_bookings = (
+                select(
+                    Bookings.__table__.columns,
+                    Rooms.__table__.columns,
+                )
+                .join(
+                    Rooms,
+                    Bookings.room_id == Rooms.id,
+                    isouter=True,
+                )
+                .where(
+                    Bookings.user_id == user_id,
+                )
+            )
+
+            user_bookings = await session.execute(get_user_bookings)
+            return user_bookings.mappings().all()
