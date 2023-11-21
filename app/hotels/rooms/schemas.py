@@ -10,6 +10,8 @@ class SRooms(BaseModel):
     services: list[str]
     quantity: int
     image_id: int
+    total_cost: int
+    rooms_left: int
 
     class Config:
         orm_mode = True

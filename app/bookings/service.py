@@ -19,6 +19,7 @@ class BookingService(BaseService):
             date_from: date,
             date_to: date,
     ):
+        """Добавляет бронирование"""
         """
         WITH booked_rooms AS(
             SELECT * FROM bookings WHERE room_id = 1 AND
@@ -81,6 +82,7 @@ class BookingService(BaseService):
 
     @classmethod
     async def delete(cls, **filter_by):
+        """Удаляет бронирование"""
         async with async_session_maker() as session:
             query = select(cls.model).filter_by(**filter_by)
             result = await session.execute(query)
@@ -92,6 +94,7 @@ class BookingService(BaseService):
 
     @classmethod
     async def get_user_bookings(cls, user_id: int):
+        """Возвращает бронирования пользователя"""
         async with async_session_maker() as session:
             get_user_bookings = (
                 select(
