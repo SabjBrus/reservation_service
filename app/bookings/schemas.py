@@ -5,6 +5,10 @@ from pydantic import BaseModel
 class SBookings(BaseModel):
     id: int
     room_id: int
+    image_id: int
+    name: str
+    description: str
+    services: list[str]
     user_id: int
     date_from: date
     date_to: date
