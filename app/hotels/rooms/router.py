@@ -11,8 +11,4 @@ async def get_rooms_by_hotel_id(
         date_from: date,
         date_to: date,
 ) -> list[SRooms]:
-    return await RoomService.get_rooms_by_hotel(
-        hotel_id=hotel_id,
-        date_from=date_from,
-        date_to=date_to,
-    )
+    return await RoomService.get_rooms_by_hotel(hotel_id, date_from, date_to)

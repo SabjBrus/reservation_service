@@ -22,4 +22,4 @@ async def get_hotels_by_location(
         date_from: date,
         date_to: date,
 ):
-    pass
+    return await HotelService.get_hotels(location, date_from, date_to)

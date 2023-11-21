@@ -3,7 +3,7 @@ from datetime import date
 from sqlalchemy import select, func, or_, and_
 
 from app.bookings.models import Bookings
-from app.database import async_session_maker, engine
+from app.database import async_session_maker
 from app.hotels.rooms.models import Rooms
 from app.service.base import BaseService
 
@@ -52,7 +52,7 @@ class RoomService(BaseService):
                 isouter=True,
             )
             .where(
-                Rooms.hotel_id == hotel_id
+                Rooms.hotel_id == hotel_id,
             )
         )
         # print(get_rooms_left.compile(engine, compile_kwargs={'literal_binds': True}))
