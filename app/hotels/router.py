@@ -23,3 +23,8 @@ async def get_hotels_by_location(
         date_to: date,
 ):
     return await HotelService.get_hotels(location, date_from, date_to)
+
+
+@router.get('/id/{hotel_id}')
+async def get_hotel_by_id(hotel_id: int) -> SHotels:
+    return await HotelService.find_by_id(hotel_id)
