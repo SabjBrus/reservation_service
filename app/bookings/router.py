@@ -1,6 +1,6 @@
-from datetime import date
+from datetime import date, datetime
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, Query
 
 from app.bookings.schemas import SBookings
 from app.bookings.service import BookingService
@@ -23,8 +23,8 @@ async def get_user_bookings(user: Users = Depends(get_current_user)) -> list[SBo
 @router.post('')
 async def add_bookings(
         room_id: int,
-        date_from: date,
-        date_to: date,
+        date_from: date = Query(..., description=f'Например, {datetime.now().date()}'),
+        date_to: date = Query(..., description=f'Например, {datetime.now().date()}'),
         user: Users = Depends(get_current_user),
 ) -> None:
     booking = await BookingService.add(user.id, room_id, date_from, date_to)
