@@ -4,6 +4,7 @@ from datetime import date, datetime
 
 from fastapi import APIRouter, Query
 from fastapi_cache.decorator import cache
+from pydantic import parse_obj_as
 
 from app.hotels.schemas import SHotels
 from app.hotels.service import HotelService
@@ -28,6 +29,9 @@ async def get_hotels_by_location(
 ) -> list[SHotels]:
     # await asyncio.sleep(3)
     hotels = HotelService.get_hotels(location, date_from, date_to)
+    # если cache ломает функцию, то парсим в Json (зависит от sqlachemy ответа)
+    # и убираем -> list[SHotels]
+    # hotels_json = parse_obj_as(list[SHotels], hotels)
     return await hotels
 
 
