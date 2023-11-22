@@ -21,7 +21,7 @@ async def get_hotels_by_location(
         location: str,
         date_from: date,
         date_to: date,
-):
+) -> list[SHotels]:
     return await HotelService.get_hotels(location, date_from, date_to)
 
 
