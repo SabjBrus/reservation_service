@@ -30,7 +30,7 @@ async def get_hotels_by_location(
     # await asyncio.sleep(3)
     hotels = HotelService.get_hotels(location, date_from, date_to)
     # если cache ломает функцию, то парсим в Json (зависит от sqlachemy ответа)
-    # и убираем -> list[SHotels]
+    # и убираем -> list[SHotels]. Итого валидируем на один шаг раньше.
     # hotels_json = parse_obj_as(list[SHotels], hotels)
     return await hotels
 
