@@ -5,7 +5,12 @@ from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from redis import asyncio as aioredis
+
 from app.bookings.router import router as router_bookings
+from app.config import settings
 from app.pages.router import router as router_pages
 from app.hotels.rooms.router import router as router_rooms
 from app.users.router import router as router_users
@@ -23,7 +28,7 @@ app.include_router(router_rooms)
 app.include_router(router_images)
 
 origins = [
-    "http://localhost:3000",
+    'http://localhost:3000',
 ]
 
 app.add_middleware(
@@ -40,6 +45,11 @@ app.add_middleware(
     ],
 )
 
+
+@app.on_event('startup')
+def startup():
+    redis = aioredis.from_url(f'redis://{settings.REDIS_HOST}:{settings.REDIS_PORT}')
+    FastAPICache.init(RedisBackend(redis), prefix='fastapi-cache')
 
 # class HotelsSearchArgs:
 #     def __init__(

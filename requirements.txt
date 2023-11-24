@@ -38,3 +38,6 @@ websockets==12.0
 
 passlib~=1.7.4
 jose~=1.0.0
+redis~=4.6.0
+Pillow~=10.1.0
+celery~=5.3.6
