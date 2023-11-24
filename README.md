@@ -38,3 +38,17 @@ Cервис бронирования жилья
     ```bash
     uvicorn app.main:app --reload
     ```
+5. Для кэширования необходим локальный запуск Redis
+6. Для использования отложенных задач, необходимо запустить в отдельном терминале Celery
+   (--pool=solo только для Windows)
+
+   ```bash
+   celery -A app.tasks.celery:celery worker --loglevel=INFO --pool=solo
+   ```
+
+7. Для мониторинга Celery по адресу http://localhost:5555/ с использованием flower:
+
+   ```bash
+   celery -A app.tasks.celery:celery flower
+   ```
+   

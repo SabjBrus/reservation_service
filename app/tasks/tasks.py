@@ -1,4 +1,5 @@
 import smtplib
+from time import sleep
 
 from pydantic import EmailStr
 
@@ -27,6 +28,7 @@ def send_booking_confirmation_email(
     booking: dict,
     email_to: EmailStr,
 ):
+    sleep(10)
     email_to_mock = settings.SMTP_USER  # отправка email себе
     msg_content = create_booking_confirmation_template(booking, email_to_mock)
 
