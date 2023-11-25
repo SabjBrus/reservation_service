@@ -41,3 +41,4 @@ jose~=1.0.0
 redis~=4.6.0
 Pillow~=10.1.0
 celery~=5.3.6
+sqladmin~=0.16.0
