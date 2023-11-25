@@ -8,7 +8,7 @@ from fastapi_cache.backends.redis import RedisBackend
 from redis import asyncio as aioredis
 from sqladmin import Admin
 
-from app.admin.views import UsersAdmin, BookingsAdmin
+from app.admin.views import UsersAdmin, BookingsAdmin, RoomsAdmin, HotelsAdmin
 from app.bookings.router import router as router_bookings
 from app.config import settings
 from app.database import engine
@@ -57,3 +57,5 @@ admin = Admin(app, engine)
 
 admin.add_view(UsersAdmin)
 admin.add_view(BookingsAdmin)
+admin.add_view(HotelsAdmin)
+admin.add_view(RoomsAdmin)
