@@ -33,7 +33,9 @@ Cервис бронирования жилья
     pip install -r requirements.txt
     ```
 
-4. Запуск проекта
+4. Запуск проекта  
+Проект доступен по адресу <http://localhost/>  
+Панель администратора <http://localhost/admin/>
 
     ```bash
     uvicorn app.main:app --reload
