@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "room_id": 1,
+    "user_id": 1,
+    "date_from": "2023-10-10",
+    "date_to": "2023-11-29",
+    "price": 22450,
+    "total_cost": 1122500,
+    "total_days": 50
+  },
+  {
+    "id": 2,
+    "room_id": 1,
+    "user_id": 2,
+    "date_from": "2023-11-10",
+    "date_to": "2023-11-29",
+    "price": 4350,
+    "total_cost": 82650,
+    "total_days": 19
+  },
+  {
+    "id": 3,
+    "room_id": 2,
+    "user_id": 1,
+    "date_from": "2023-11-22",
+    "date_to": "2023-11-29",
+    "price": 4350,
+    "total_cost": 30450,
+    "total_days": 7
+  }
+]

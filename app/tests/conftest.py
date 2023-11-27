@@ -1,5 +1,6 @@
 import asyncio
 import json
+from datetime import datetime
 
 import pytest
 from sqlalchemy import insert
@@ -29,6 +30,10 @@ async def prepare_database():
     rooms = open_mock_json('rooms')
     users = open_mock_json('users')
     bookings = open_mock_json('bookings')
+
+    for booking in bookings:
+        booking['date_from'] = datetime.strptime(booking['date_from'], '%Y-%m-%d')
+        booking['date_to'] = datetime.strptime(booking['date_to'], '%Y-%m-%d')
 
     async with async_session_maker() as session:
         add_hotels = insert(Hotels).values(hotels)
