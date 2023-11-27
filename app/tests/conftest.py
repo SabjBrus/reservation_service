@@ -19,8 +19,8 @@ async def prepare_database():
     assert settings.MODE == 'TEST'
 
     async with engine.begin() as conn:
-        await conn.runsync(Base.metadata.drop_all)
-        await conn.runsync(Base.metadata.create_all)
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
 
     def open_mock_json(model: str):
         with open(f'app/tests/mock_{model}.json', 'r') as file:
