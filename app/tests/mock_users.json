@@ -1,10 +1,10 @@
 [
   {
   "email": "test1@test.com",
-  "hashed_password": "$2b$12$fxuj.4J5IAuyzDQnIRpILeMTXiqxzOpx.Ej7g5n4sb2EQuC4e8M/i"
+  "hashed_password": "$2b$12$aG8OnX/tRI.fgzyKBvC8b.ervWs5rkkd3b6V9WLqHqoGRJsljwUw6"
   },
   {
   "email": "test2@test.com",
-  "hashed_password": "$2b$12$fxuj.4J5IAuyzDQnIRpILeMTXiqxzOpx.Ej8g5n4sb2EQuC4e8M/i"
+  "hashed_password": "$2b$12$4O/Gx8AsF2IKmX2c.OtB5.l0JMe7HqJP.3luCa7Hi5YEjDibvY/w6"
   }
 ]
