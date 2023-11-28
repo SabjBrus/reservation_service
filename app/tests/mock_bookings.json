@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "room_id": 1,
     "user_id": 1,
     "date_from": "2023-10-10",
@@ -8,7 +7,6 @@
     "price": 22450
   },
   {
-    "id": 2,
     "room_id": 1,
     "user_id": 2,
     "date_from": "2023-11-10",
@@ -16,7 +14,6 @@
     "price": 4350
   },
   {
-    "id": 3,
     "room_id": 2,
     "user_id": 1,
     "date_from": "2023-11-22",
