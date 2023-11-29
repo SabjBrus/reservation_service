@@ -22,7 +22,7 @@ async def get_hotels() -> list[SHotels]:
 
 
 @router.get('/{location}')
-@cache(expire=30)
+# @cache(expire=30)
 async def get_hotels_by_location(
         location: str,
         date_from: date = Query(..., description=f'Например, {datetime.now().date()}'),
