@@ -1,0 +1,16 @@
+[tool.black]
+line-lenght = 100
+target-version =['py39']
+
+[tool.flake8]
+    exclude = "venv"
+    max-complexity = 10
+    max-line-length = 100
+    extend-ignore = """
+        W503,
+        E203,
+        E701,
+    """
+
+[tool.isort]
+profile = 'black'

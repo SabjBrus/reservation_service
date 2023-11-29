@@ -2,7 +2,7 @@ from sqlalchemy import NullPool
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-from app.config import DATABASE_URL, settings, TEST_DATABASE_URL
+from app.config import DATABASE_URL, TEST_DATABASE_URL, settings
 
 if settings.MODE == 'TEST':
     DATABASE_URL = TEST_DATABASE_URL

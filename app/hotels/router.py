@@ -1,10 +1,6 @@
-import asyncio
-
 from datetime import date, datetime, timedelta
 
 from fastapi import APIRouter, Query
-from fastapi_cache.decorator import cache
-from pydantic import parse_obj_as
 
 from app.exceptions import IncorrectDates
 from app.hotels.schemas import SHotels
