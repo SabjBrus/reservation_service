@@ -1,15 +1,14 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
-from fastapi import APIRouter, Depends, status, Query
+from fastapi import APIRouter, Depends, Query, status
 from pydantic import parse_obj_as
 
 from app.bookings.schemas import SBookings, SBookingsInfo
 from app.bookings.service import BookingService
-from app.exceptions import RoomCannotBeBooked
+from app.exceptions import IncorrectDates, RoomCannotBeBooked
 from app.tasks.tasks import send_booking_confirmation_email
 from app.users.dependencies import get_current_user
 from app.users.models import Users
-
 
 router = APIRouter(
     prefix='/bookings',
@@ -29,6 +28,8 @@ async def add_bookings(
         date_to: date = Query(..., description=f'Например, {datetime.now().date()}'),
         user: Users = Depends(get_current_user),
 ):
+    if (date_from >= date_to) or (date_to - date_from > timedelta(days=30)):
+        raise IncorrectDates
     booking = await BookingService.add(user.id, room_id, date_from, date_to)
     if not booking:
         raise RoomCannotBeBooked

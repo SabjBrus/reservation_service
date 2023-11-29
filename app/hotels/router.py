@@ -1,11 +1,8 @@
-import asyncio
-
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from fastapi import APIRouter, Query
-from fastapi_cache.decorator import cache
-from pydantic import parse_obj_as
 
+from app.exceptions import IncorrectDates
 from app.hotels.schemas import SHotels
 from app.hotels.service import HotelService
 
@@ -21,13 +18,15 @@ async def get_hotels() -> list[SHotels]:
 
 
 @router.get('/{location}')
-@cache(expire=30)
+# @cache(expire=30)
 async def get_hotels_by_location(
         location: str,
         date_from: date = Query(..., description=f'Например, {datetime.now().date()}'),
         date_to: date = Query(..., description=f'Например, {datetime.now().date()}'),
 ) -> list[SHotels]:
     # await asyncio.sleep(3)
+    if (date_from >= date_to) or (date_to - date_from > timedelta(days=30)):
+        raise IncorrectDates
     hotels = HotelService.get_hotels(location, date_from, date_to)
     # если cache ломает функцию, то парсим в Json (зависит от sqlachemy ответа)
     # и убираем -> list[SHotels]. Итого валидируем на один шаг раньше.

@@ -3,21 +3,16 @@ import json
 from datetime import datetime
 
 import pytest
+from httpx import AsyncClient
 from sqlalchemy import insert
 
-from app.config import settings
-from app.database import Base, engine, async_session_maker
-
 from app.bookings.models import Bookings
-from app.users.models import Users
+from app.config import settings
+from app.database import Base, async_session_maker, engine
 from app.hotels.models import Hotels
 from app.hotels.rooms.models import Rooms
-
-from fastapi.testclient import TestClient
-from httpx import AsyncClient
-
 from app.main import app as fastapi_app
-
+from app.users.models import Users
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -57,7 +52,7 @@ async def prepare_database():
 
 #  Взять из доки к pytest-asyncio
 @pytest.fixture(scope='session')
-def event_loop (request):
+def event_loop(request):
     """Create an instance of the default event loop for each test case."""
     loop = asyncio.get_event_loop_policy().new_event_loop()
     yield loop
