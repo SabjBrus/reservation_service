@@ -7,9 +7,26 @@ Cервис бронирования жилья
 
 - Python 3.9
 - FastAPI
-- Uvicorn
+- Gunicorn
+- Docker
+- Celery
+- Redis
 
-## Запуск
+## Запуск в Docker
+
+1. Склонировать репозиторий:
+
+   ```bash
+   git clone https://github.com/SabjBrus/reservation_servise.git
+   ```
+
+2. Из директории reservation_service/ запустить Docker Compose:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+## Запуск без Docker
 
 1. Склонировать репозиторий:
 
