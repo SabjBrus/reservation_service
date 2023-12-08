@@ -1,6 +1,6 @@
 # Reservation servise
 
-API сервиса для бронирования, посторенного с использованием FastAPI.  
+API сервиса для бронирования, построенного с использованием FastAPI.  
 Веб-сервис предоставляет функциональность для регистрации и аутентификации,  
 бронирования номеров в отелях.
 
@@ -23,7 +23,9 @@ API сервиса для бронирования, посторенного с 
    git clone https://github.com/SabjBrus/reservation_servise.git
    ```
 
-2. Из директории reservation_service/ запустить Docker Compose:
+2. Заменить в файле .env.example значения на свои данные.
+
+3. Из директории reservation_service/ запустить Docker Compose:
 
    ```bash
    docker-compose up --build
