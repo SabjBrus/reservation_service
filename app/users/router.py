@@ -17,6 +17,7 @@ router = APIRouter(
 
 @router.post('/register')
 async def register_user(user_data: SUserAuth):
+    """Регистрация пользователя"""
     existing_user = await UsersService.find_one_or_none(email=user_data.email)
     if existing_user:
         raise UserAlreadyExistsException
@@ -26,6 +27,7 @@ async def register_user(user_data: SUserAuth):
 
 @router.post('/login')
 async def login_user(response: Response, user_data: SUserAuth):
+    """Логин пользователя"""
     user = await authenticate_user(user_data.email, user_data.password)
     if not user:
         raise IncorrectEmailOrPasswordException
@@ -36,9 +38,11 @@ async def login_user(response: Response, user_data: SUserAuth):
 
 @router.post('/logout')
 async def logout_user(response: Response):
+    """Логаут пользователя"""
     response.delete_cookie('booking_access_token')
 
 
 @router.get('/me')
 async def read_users_me(current_user: Users = Depends(get_current_user)):
+    """Получение текущего пользователя"""
     return current_user
