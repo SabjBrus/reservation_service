@@ -5,6 +5,7 @@ from app.database import Base
 
 
 class Bookings(Base):
+    """Класс бронирования"""
     __tablename__ = 'bookings'
 
     id = Column(Integer, primary_key=True)
