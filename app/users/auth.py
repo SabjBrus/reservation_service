@@ -11,14 +11,17 @@ pwd_contex = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
 
 def get_password_hash(password: str) -> str:
+    """Хэширование пароля"""
     return pwd_contex.hash(password)
 
 
 def verify_password(plain_password, hashed_password) -> bool:
+    """Верификация пароля"""
     return pwd_contex.verify(plain_password, hashed_password)
 
 
 def create_access_token(data: dict) -> str:
+    """Создание токена"""
     to_encode = data.copy()
     expire = datetime.utcnow() + timedelta(minutes=30)
     to_encode.update({'exp': expire})
@@ -29,6 +32,7 @@ def create_access_token(data: dict) -> str:
 
 
 async def authenticate_user(email: EmailStr, password: str):
+    """Аутентификация пользователя"""
     user = await UsersService.find_one_or_none(email=email)
     if user and verify_password(password, user.hashed_password):
         return user

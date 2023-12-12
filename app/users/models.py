@@ -5,6 +5,7 @@ from app.database import Base
 
 
 class Users(Base):
+    """Класс пользователей"""
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, nullable=False)
